@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@algo-builder/web": "^3.0.0"
+  }
+}
