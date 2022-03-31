@@ -1,0 +1,139 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
+.pTags {
+  display: flex;
+  justify-content: center;
+}
+.blocksMain {
+  display: flex;
+  justify-content: center;
+}
+.blocks {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  height: 40vh;
+  background-color: black;
+  flex-wrap: wrap;
+}
+.create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  width: 47%;
+  height: 18vh;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid rgb(0, 132, 255);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.import {
+  margin: 2px;
+  width: 47%;
+  height: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  flex-direction: column;
+  border: 2px solid rgb(0, 132, 255);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.algosigner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  width: 47%;
+  height: 18vh;
+  background-color: white;
+  flex-direction: column;
+  border: 2px solid rgb(0, 132, 255);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.walletConnect {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47%;
+  margin: 2px;
+  height: 18vh;
+  background-color: white;
+  flex-direction: column;
+  border: 2px solid rgb(0, 132, 255);
+  border-radius: 5px;
+}
+#add {
+  width: 40px;
+  height: 40px;
+}
+#import {
+  width: 40px;
+  height: 40px;
+}
+#algosigner {
+  margin-top: 10px;
+}
+#nft {
+  background: linear-gradient(to right, rgb(88, 6, 109) 0%, #dd4c4f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+#backup {
+  display: none;
+  height: 60vh;
+  width: 43%;
+  position: fixed;
+  background-color: black;
+  top: 20%;
+  border-radius: 10px;
+  left: 30%;
+}
+#algoImage {
+  width: 200px;
+  height: 200px;
+  margin-left: 20%;
+}
+#h2Text {
+  color: white;
+  font-size: 18px;
+  margin-left: 15%;
+}
+#pText {
+  color: white;
+  padding: 10px;
+  font-size: 13px;
+}
+#iUnderstand {
+  width: 40%;
+  padding: 6px;
+  background-image: linear-gradient(
+    to right,
+    #aa076b 0%,
+    #61045f 51%,
+    #aa076b 100%
+  );
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  margin-top: 10%;
+  cursor: pointer;
+  margin-left: 30%;
+  transition: 0.7s;
+}
+
+#iUnderstand:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
