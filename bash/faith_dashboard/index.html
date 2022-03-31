@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Welcome to <b id="nft">XcityWays</b></h1>
+    </div>
+    <div class="pTags">
+      <p>
+        You need an algorand wallet to continue.<br /><b>Get started now!</b>
+      </p>
+    </div>
+    <div class="blocksMain">
+      <div class="blocks">
+        <div class="create" onclick="generateAcct()">
+          <img src="add.png" id="add" />
+          <p>Create a new Algorand Account</p>
+        </div>
+        <div class="import">
+          <img src="download.jpg" id="import" />
+          <p>Import an existing account</p>
+        </div>
+        <div class="algosigner">
+          <img src="algosigner.png" id="algosigner" />
+          <p>Simply create or import yout Algosigner account</p>
+        </div>
+        <div class="walletConnect">
+          <img src="myAlgo.png" id="myAlgo" />
+          <p>Securely sign transactions with nmy Algo Connect</p>
+        </div>
+      </div>
+    </div>
+    <div id="backup">
+      <img src="algo.png" id="algoImage" />
+      <h2 id="h2Text">Back up your account using a recovery passphrase</h2>
+      <p id="pText">
+        Without your recovery passphrase, if you lose your device the app, you
+        will parmanently lose access to your Algorand account.
+      </p>
+      <button id="iUnderstand" onclick="createAcct()">I understand</button>
+    </div>
+  </body>
+  <script>
+    function generateAcct() {
+      const proceed = document.getElementById("backup");
+      proceed.style.setProperty("display", "initial");
+    }
+  </script>
+  <script type="module">
+    function createAcct() {
+      import algosdk from "algosdk";
+      //This helps in connecting the client with the algorand network
+      const baseServer = "https://testnet-algorand.api.purestake.io/ps2";
+      const port = "";
+      const token = {
+        "X-API-Key": "YpG0KO7uiT6GkDZF2u4ng1poAqgQG3Zs3Wkv2f5L", //Your APi key here
+      };
+      let algodClient = new algosdk.Algodv2(token, baseServer, port);
+      const mnemonic = "ww";
+      const proceed = document.getElementById("pText");
+      let newAcct = algosdk.generateAcct();
+      let mnemonic = algosdk.secretKeyToMnemonic(newAcct);
+      console.log(mnemonic);
+      proceed.innerHTML == mnemonic;
+    }
+  </script>
+</html>
