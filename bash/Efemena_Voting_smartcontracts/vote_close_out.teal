@@ -1,0 +1,37 @@
+#pragma version 2
+global Round
+byte "votingEnds"
+app_global_get
+>
+bnz main_l6
+int 0
+txn ApplicationID
+byte "voted"
+app_local_get_ex
+store 0
+store 1
+load 0
+bnz main_l3
+int 1
+return
+main_l3:
+int 0
+load 1
+app_global_get_ex
+store 2
+store 3
+load 2
+bnz main_l5
+int 1
+return
+main_l5:
+load 1
+load 3
+int 1
+-
+app_global_put
+int 1
+return
+main_l6:
+int 1
+return
