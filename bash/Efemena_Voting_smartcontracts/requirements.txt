@@ -1,0 +1,4 @@
+python == 3.10.1
+py-algorand-sdk==1.8.0
+pyteal == 0.9.1
+Python IDE (Vscode)
