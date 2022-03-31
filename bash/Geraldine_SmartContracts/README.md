@@ -1,0 +1,1 @@
+# Setting up folder for smart contracting based dApps on Algorand
