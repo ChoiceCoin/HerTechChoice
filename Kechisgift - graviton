@@ -1,0 +1,131 @@
+GRAVITON (aka the TEAL Blackbox Toolkit): Program Reporting and Testing via Dry Runs
+
+http://cds.cern.ch/record/2315186/files/scoap3-fulltext.pdf
+
+NOTE: to get math formulas to render here using Chrome, add the xhub extension and reload
+
+DISCLAIMER: Graviton is subject to change and makes no backwards compatability guarantees.
+
+Blackbox Testing Howto
+
+What is TEAL Blackbox Testing?
+
+TEAL Blackbox Testing lets you gain confidence that your Algorand smart contracts are correct by writing assertions and and analyzing results via dry runs.
+
+Why Blackbox Testing?
+
+Here are some use cases:
+
+by allowing you to assert that certain invariants hold over a large set of inputs you gain greater confidence that your TEAL programs and AVM smart contracts work as designed
+
+when tweaking, refactoring or optimizing your TEAL source, ensure that no regressions have occured
+
+allows AVM developers to practice the art of TTDD (TEAL Test Driven Development)
+
+Simple TEAL Blackbox Toolkit Example: Program for $x^2$
+
+Consider this TEAL program for computing $x^2$:
+
+#pragma version 6
+
+arg 0
+
+btoi
+
+callsub square_0
+
+return
+
+// square
+
+square_0:
+
+store 0
+
+load 0
+
+pushint 2 // 2
+
+exp
+
+retsub
+
+We'd like to write some unit tests to validate its correctness and make assertions about the:
+
+program's opcode cost
+
+program's stack
+
+stack's height
+
+scratch variables
+
+final log message (this is especially useful for ABI-compliant programs)
+
+status (PASS or REJECT)
+
+error conditions that are and aren't encountered
+
+Even better, before making fine-grained assertions we'd like to get a sense of what the program is doing on a large set of inputs and discover experimentally these program invariants. Let's go through how we can do this:
+
+start by making basic assertions and validate them using dry runs (see "Basic Assertions" section below)
+
+execute the program on a sequence of inputs and explore the results (see "EDRA: Exploratory Dry Run Analysis" section below)
+
+create invariants for the entire sequence and assert that the invariants hold (see "Advanced: Asserting Invariants on a Dry Run Sequence" section below)
+
+Becoming a TEAL Blackbox Toolkit Ninja involves 10 steps as described below
+
+Dry Run Environment Setup
+
+STEP 1. Start with a running local node and make note of Algod's port number (for our standard sandbox this is 4001)
+
+STEP 2. Set the ALGOD_PORT value in tests/clients.py to this port number. (The port is already pre-set to 4001 because graviton's CI process uses the standad sandbox)
+
+TEAL Program for Testing: Logic Sig v. App
+
+STEP 3. Next, you'll need to figure out if your TEAL program should be a Logic Signature or an Application. Each of these program modes has its merits, but we won't get into the pros/cons here. From a Blackbox Test's perspective, the main difference is how external arguments are handled. Logic sigs rely on the arg opcode while apps rely on txna ApplicationArgs i. In our $x^2$ logic sig example, you can see on line 2 that the arg opcode is used. Because each argument opcode (arg versus ApplicationArgs) is mode-exclusive, any program that takes input will execute succesfully in one mode only.
+
+STEP 4. Write the TEAL program that you want to test. You can inline the test as described here or follow the approach of ./tests/integration/blackbox_test.py and save under ./tests/teal. So following the inline appraoch we begin our TEAL Blackbox script with an inline teal source variable:
+
+teal = """#pragma version 6
+
+arg 0
+
+btoi
+
+callsub square_0
+
+return
+
+// square
+
+square_0:
+
+store 0
+
+load 0
+
+pushint 2 // 2
+
+exp
+
+retsub"""
+
+The TEAL Blackbox Toolkit's Utitlity Classes
+
+The TEAL Blackbox Toolkit comes with the following main classes:
+
+DryRunExecutor - executes dry run's for apps and logic sigs for one or more inputs
+
+DryRunInspector - encapsulates a dry run's result for a single input and allows inspecting and making assertions about it
+
+Invariant - class for asserting invariants about a sequence of dry run executions in a declarative fashion
+
+
+
+
+
+
+
+
