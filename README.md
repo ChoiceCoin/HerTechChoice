@@ -6,3 +6,5 @@ Her Tech Choice is a 6-Weeks virtual bootcamp for ladies who are interested in s
 [Website](https://hertechchoice.com/)
 
 [Twitter](https://twitter.com/HerTechChoice)
+
+[GitHub](https://github.com/Hertechchoice)
