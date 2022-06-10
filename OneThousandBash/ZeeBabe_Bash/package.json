@@ -1,0 +1,15 @@
+{
+  "name": "if_bash",
+  "version": "1.0.0",
+  "description": "Choice coin - HerTechBash",
+  "main": "if_bash.js",
+  "scripts": {
+    "start": "node if_bash"
+  },
+  "author": "ZeeBabe",
+  "license": "ISC",
+  "dependencies": {
+    "algosdk": "^1.12.0",
+    "prompt": "^1.2.0"
+  }
+}
