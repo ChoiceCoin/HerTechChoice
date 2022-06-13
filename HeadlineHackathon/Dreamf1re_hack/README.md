@@ -4,7 +4,7 @@ This is a web app, designed with PyWebIO, which aims to make text files permanen
 ## Usage
 1. Download this entire folder.
 2. Install required packages using ```pip install -r requirements.txt```.
-3. Edit Environment Variables -> add variable name "test_mnemonic" <br />with variable value which is your test mnemonic.
+3. Edit Environment Variables -> add variable name "test_mnemonic" with variable value which is your test mnemonic. Make sure to fund this account with TestNet ALGOs
 5. Run deploy.py through ```python deploy.py```.
 
 Running deploy.py will start a new tab in the user's default 
