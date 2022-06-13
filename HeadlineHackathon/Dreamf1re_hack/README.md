@@ -13,5 +13,5 @@ can now start making text files permanent on the Algorand blockchain.
 
 ## Notes
 Only use text files that are allowed to be accessed publicly. Never use this web app with <br/> 
-text files containing private information as it will be made permanent in the Algorand blockchain <br/>
+text files containing private information as they will be made permanent in the Algorand blockchain <br/>
 which is a ```public``` blockchain.
